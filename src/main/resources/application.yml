@@ -1,4 +1,13 @@
 spring:
+  kafka:
+    listener:
+      ack-mode: manual-immediate
+    consumer:
+      bootstrap-servers: localhost:9092
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: circuitbreaker
   application:
     name: ms-sale
   datasource:
@@ -7,7 +16,7 @@ spring:
     password: ${db.pwd}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
   profiles:
     default: default
   config:
